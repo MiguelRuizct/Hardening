@@ -215,7 +215,7 @@ function cis_download(){
 
 	if [[ $CISURL == "" ]]
 	then
-		CISURL="https://raw.githubusercontent.com/segloser/hardening-tests/main/cis_ubuntu$VERSION-04_L1.yml"
+		CISURL="https://raw.githubusercontent.com/MiguelRuizct/Hardening/main/cis_ubuntu$VERSION-04_L1.yml"
 	fi
 	wget $CISURL 
 	chgrp ossec /var/ossec/ruleset/sca/cis_ubuntu$VERSION-04_L1.yml
