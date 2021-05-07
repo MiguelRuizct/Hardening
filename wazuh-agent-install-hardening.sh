@@ -302,7 +302,8 @@ function install_git(){
 
 	if [ ! -d "/opt/Ubuntu1804-CIS" ]
 	then
-		git clone https://github.com/MiguelRuizct/Ubuntu1804-CIS /opt/Ubuntu1804-CIS
+		mkdir -r /opt/Ubuntu1804-CIS
+		#git clone https://github.com/MiguelRuizct/Ubuntu1804-CIS /opt/Ubuntu1804-CIS
 	fi
 }
 
@@ -311,14 +312,15 @@ install_git
 cd /opt/Ubuntu1804-CIS
 
 # Tailoring some files
-sed -i 's/ubuntu1804cis_xwindows_required: false/ubuntu1804cis_xwindows_required: true/g' /opt/Ubuntu1804-CIS/defaults/main.yml
-sed -i 's/ubuntu1804cis_selinux_disable: false/ubuntu1804cis_selinux_disable: true/g' /opt/Ubuntu1804-CIS/defaults/main.yml
-sed -i 's/ubuntu1804cis_config_aide: true/ubuntu1804cis_config_aide: false/g' /opt/Ubuntu1804-CIS/defaults/main.yml
+#sed -i 's/ubuntu1804cis_xwindows_required: false/ubuntu1804cis_xwindows_required: true/g' /opt/Ubuntu1804-CIS/defaults/main.yml
+#sed -i 's/ubuntu1804cis_selinux_disable: false/ubuntu1804cis_selinux_disable: true/g' /opt/Ubuntu1804-CIS/defaults/main.yml
+#sed -i 's/ubuntu1804cis_config_aide: true/ubuntu1804cis_config_aide: false/g' /opt/Ubuntu1804-CIS/defaults/main.yml
+
 echo "- src: https://github.com/MiguelRuizct/Ubuntu1804-CIS.git" > /opt/Ubuntu1804-CIS/requirements.yml
 
 # File fixing
-sed -i 's/collections://g' /opt/Ubuntu1804-CIS/meta/main.yml
-sed -i 's/  - ansible.posix//g' /opt/Ubuntu1804-CIS/meta/main.yml
+#sed -i 's/collections://g' /opt/Ubuntu1804-CIS/meta/main.yml
+#sed -i 's/  - ansible.posix//g' /opt/Ubuntu1804-CIS/meta/main.yml
 
 ##########################
 ### CONTROL BREAKPOINT ###
