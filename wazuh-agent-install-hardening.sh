@@ -302,7 +302,7 @@ function install_git(){
 
 	if [ ! -d "/opt/Ubuntu1804-CIS" ]
 	then
-		git clone https://github.com/florianutz/Ubuntu1804-CIS /opt/Ubuntu1804-CIS
+		git clone https://github.com/MiguelRuizct/Ubuntu1804-CIS /opt/Ubuntu1804-CIS
 	fi
 }
 
