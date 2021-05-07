@@ -314,7 +314,7 @@ cd /opt/Ubuntu1804-CIS
 sed -i 's/ubuntu1804cis_xwindows_required: false/ubuntu1804cis_xwindows_required: true/g' /opt/Ubuntu1804-CIS/defaults/main.yml
 sed -i 's/ubuntu1804cis_selinux_disable: false/ubuntu1804cis_selinux_disable: true/g' /opt/Ubuntu1804-CIS/defaults/main.yml
 sed -i 's/ubuntu1804cis_config_aide: true/ubuntu1804cis_config_aide: false/g' /opt/Ubuntu1804-CIS/defaults/main.yml
-echo "- src: https://github.com/florianutz/Ubuntu1804-CIS.git" > /opt/Ubuntu1804-CIS/requirements.yml
+echo "- src: https://github.com/MiguelRuizct/Ubuntu1804-CIS.git" > /opt/Ubuntu1804-CIS/requirements.yml
 
 # File fixing
 sed -i 's/collections://g' /opt/Ubuntu1804-CIS/meta/main.yml
