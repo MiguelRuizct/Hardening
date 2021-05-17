@@ -73,7 +73,7 @@ function check_internet(){
 	clear
 	echo "[i] - As this should be a clean Ubuntu installation, I need to update..."
 	echo "[i] - Checking Internet connection..."
-	if [[ $(ping -c1 1.1.1.1 | grep -Eo "100% packet loss") == "100% packet loss" ]]
+	if [[ $(ping -c1 8.8.8.8 | grep -Eo "100% packet loss") == "100% packet loss" ]]
 	then
 		echo "[i] - No Internet connection."
 		echo "[i] - Please, fix the connectivity issue and try again."
