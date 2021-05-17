@@ -391,7 +391,7 @@ clear
 ###read -p "[r] - Press ENTER when ready to play the book with Ansible"
 
 # Skipping some rules and actions 
-ansible-playbook /opt/Ubuntu1804-CIS/my_console.yml --skip-tags "rule_1.9"
+ansible-playbook /opt/Ubuntu1804-CIS/my_console.yml --skip-tags "aide, grub_config, rule_2.2.1.1, rule_2.2.3, rule_1.9"
 
 function ansible_remove(){
 	
