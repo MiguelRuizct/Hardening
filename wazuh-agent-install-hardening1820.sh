@@ -302,26 +302,26 @@ function install_git(){
 		echo "GITINSTALLED" >> $LOG
 	fi
 
-	if [ ! -d "/opt/ubuntu$VERSION04-CIS" ]
+	if [ ! -d "/opt/Ubuntu$VERSION04-CIS" ]
 	then
-		git clone https://github.com/MiguelRuizct/ubuntu$VERSION04-CIS /opt/ubuntu$VERSION04-CIS
+		git clone https://github.com/MiguelRuizct/Ubuntu$VERSION04-CIS /opt/Ubuntu$VERSION04-CIS
 	fi
 }
 
 install_git
 
-cd /opt/ubuntu$VERSION04-CIS
+cd /opt/Ubuntu$VERSION04-CIS
 
 # Tailoring some files
-#sed -i 's/ubuntu$VERSION04cis_xwindows_required: false/ubuntu$VERSION04cis_xwindows_required: true/g' /opt/ubuntu$VERSION04-CIS/defaults/main.yml
-#sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/ubuntu$VERSION04-CIS/defaults/main.yml
-#sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/ubuntu$VERSION04-CIS/defaults/main.yml
+#sed -i 's/ubuntu$VERSION04cis_xwindows_required: false/ubuntu$VERSION04cis_xwindows_required: true/g' /opt/Ubuntu$VERSION04-CIS/defaults/main.yml
+#sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/Ubuntu$VERSION04-CIS/defaults/main.yml
+#sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/Ubuntu$VERSION04-CIS/defaults/main.yml
 
-echo "- src: https://github.com/MiguelRuizct/ubuntu$VERSION04-CIS.git" > /opt/ubuntu$VERSION04-CIS/requirements.yml
+echo "- src: https://github.com/MiguelRuizct/ubuntu$VERSION04-CIS.git" > /opt/Ubuntu$VERSION04-CIS/requirements.yml
 
 # File fixing
-#sed -i 's/collections://g' /opt/ubuntu$VERSION04-CIS/meta/main.yml
-#sed -i 's/  - ansible.posix//g' /opt/ubuntu$VERSION04-CIS/meta/main.yml
+#sed -i 's/collections://g' /opt/Ubuntu$VERSION04-CIS/meta/main.yml
+#sed -i 's/  - ansible.posix//g' /opt/Ubuntu$VERSION04-CIS/meta/main.yml
 
 ##########################
 ### CONTROL BREAKPOINT ###
@@ -330,22 +330,22 @@ echo "- src: https://github.com/MiguelRuizct/ubuntu$VERSION04-CIS.git" > /opt/ub
 
 ansible-galaxy install -p roles -r requirements.yml
 
-sed -i 's/collections://g' /opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/meta/main.yml
-sed -i 's/  - ansible.posix//g' /opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/meta/main.yml
+sed -i 's/collections://g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/meta/main.yml
+sed -i 's/  - ansible.posix//g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/meta/main.yml
 
-sed -i 's/ubuntu$VERSION04cis_xwindows_required: false/ubuntu$VERSION04cis_xwindows_required: true/g' /opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/defaults/main.yml
-sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/defaults/main.yml
-sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/defaults/main.yml
+sed -i 's/ubuntu$VERSION04cis_xwindows_required: false/ubuntu$VERSION04cis_xwindows_required: true/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
+sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
+sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
 
 echo "Generating the playbook (my_console.yml)"
-echo "- name: Harden Server" > /opt/ubuntu$VERSION04-CIS/my_console.yml
-echo "  hosts: localhost" >> /opt/ubuntu$VERSION04-CIS/my_console.yml
-echo "  become: yes" >> /opt/ubuntu$VERSION04-CIS/my_console.yml
+echo "- name: Harden Server" > /opt/Ubuntu$VERSION04-CIS/my_console.yml
+echo "  hosts: localhost" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
+echo "  become: yes" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
 echo ""
-echo "  any_errors_fatal: false" >> /opt/ubuntu$VERSION04-CIS/my_console.yml
-echo "  ignore_errors: true" >> /opt/ubuntu$VERSION04-CIS/my_console.yml
-echo "  roles:" >> /opt/ubuntu$VERSION04-CIS/my_console.yml
-echo "    - ubuntu$VERSION04-CIS" >> /opt/ubuntu$VERSION04-CIS/my_console.yml
+echo "  any_errors_fatal: false" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
+echo "  ignore_errors: true" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
+echo "  roles:" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
+echo "    - Ubuntu$VERSION04-CIS" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
 
 sed -i 's/- name: generate new grub config\n  become: true\n  command: grub-mkconfig -o "{{ grub_cfg.stat.path }}"\n  notify: fix permissions after generate new grub config handler\n/- name: generate new grub config\n  become: true\n  command: grub-mkconfig -o "{{ grub_cfg.stat.path }}"\n  notify: fix permissions after generate new grub config handler\n  tags: grub_config\n/g'  /opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/handlers/main.yml
 
@@ -355,7 +355,7 @@ function add_tag(){
 	echo '#!/user/bin/python' > /tmp/replace.py
 	echo 'import re' >> /tmp/replace.py
 	echo '' >> /tmp/replace.py
-	echo 'filename = "/opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/handlers/main.yml"' >> /tmp/replace.py
+	echo 'filename = "/opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/handlers/main.yml"' >> /tmp/replace.py
 	echo '' >> /tmp/replace.py
 	echo 'search_text = """' >> /tmp/replace.py
 	echo '- name: generate new grub config' >> /tmp/replace.py
@@ -393,7 +393,7 @@ clear
 ###read -p "[r] - Press ENTER when ready to play the book with Ansible"
 
 # Skipping some rules and actions 
-ansible-playbook /opt/ubuntu$VERSION04-CIS/my_console.yml --skip-tags "aide, grub_config, rule_2.2.1.1, rule_2.2.3, rule_1.9"
+ansible-playbook /opt/Ubuntu$VERSION04-CIS/my_console.yml --skip-tags "aide, grub_config, rule_2.2.1.1, rule_2.2.3, rule_1.9"
 
 function ansible_remove(){
 	
@@ -469,7 +469,7 @@ function removing_misc(){
 	sed -i 's/APT::Periodic::Unattended-Upgrade "0"/APT::Periodic::Unattended-Upgrade "1"/g' /etc/apt/apt.conf.d/20auto-upgrades
 
 	## Cleaning and Removing Previously added repository
-	rm -rf /opt/ubuntu$VERSION04-CIS
+	rm -rf /opt/Ubuntu$VERSION04-CIS
 	sudo apt autoremove -y
 	sudo apt autoclean
 	sudo apt clean cache
