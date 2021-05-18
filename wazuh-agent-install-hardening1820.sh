@@ -21,9 +21,11 @@ function check_ubuntu_version(){
 	if [[ $VERSIONCHECK == "20.04" ]]
 	then
 		VERSION="20"
+		VERSION04="2004"
 	elif [[ $VERSIONCHECK == "18.04" ]]
 	then
 		VERSION="18"
+		VERSION="1804"
 	else
 		echo "This script is not tested for the detected version"
 	fi
