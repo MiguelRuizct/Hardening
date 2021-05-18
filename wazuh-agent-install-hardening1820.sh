@@ -88,9 +88,18 @@ function check_internet(){
 
 # Adding Universe Multiverse
 echo "Adding Universe and Multivers to APT Sources List in Cubic"
-sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic main restricted universe multiverse/g' /etc/apt/sources.list
-sed -i 's/deb http:\/\/security.ubuntu.com\/ubuntu\/ bionic-security main restricted/deb http:\/\/security.ubuntu.com\/ubuntu\/ bionic-security main restricted universe multiverse/g' /etc/apt/sources.list
-sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic-updates main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic-updates main restricted universe multiverse/g' /etc/apt/sources.list
+if [[ $VERSION == "20" ]]
+	then
+	sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal main restricted universe multiverse/g' /etc/apt/sources.list
+	sed -i 's/deb http:\/\/security.ubuntu.com\/ubuntu\/ focal-security main restricted/deb http:\/\/security.ubuntu.com\/ubuntu\/ focal-security main restricted universe multiverse/g' /etc/apt/sources.list
+	sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal-updates main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal-updates main restricted universe multiverse/g' /etc/apt/sources.list
+	elif [[ $VERSIONCHECK == "18" ]]
+	then
+	sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic main restricted universe multiverse/g' /etc/apt/sources.list
+	sed -i 's/deb http:\/\/security.ubuntu.com\/ubuntu\/ bionic-security main restricted/deb http:\/\/security.ubuntu.com\/ubuntu\/ bionic-security main restricted universe multiverse/g' /etc/apt/sources.list
+	sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic-updates main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic-updates main restricted universe multiverse/g' /etc/apt/sources.list
+	fi
+
 
 check_internet
 sudo apt update -y
@@ -330,12 +339,12 @@ echo "- src: https://github.com/MiguelRuizct/Ubuntu$VERSION04-CIS.git" > /opt/Ub
 
 ansible-galaxy install -p roles -r requirements.yml
 
-sed -i 's/collections://g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/meta/main.yml
-sed -i 's/  - ansible.posix//g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/meta/main.yml
+#sed -i 's/collections://g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/meta/main.yml
+#sed -i 's/  - ansible.posix//g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/meta/main.yml
 
-sed -i 's/ubuntu$VERSION04cis_xwindows_required: false/ubuntu$VERSION04cis_xwindows_required: true/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
-sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
-sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
+#sed -i 's/ubuntu$VERSION04cis_xwindows_required: false/ubuntu$VERSION04cis_xwindows_required: true/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
+#sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
+#sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/defaults/main.yml
 
 echo "Generating the playbook (my_console.yml)"
 echo "- name: Harden Server" > /opt/Ubuntu$VERSION04-CIS/my_console.yml
