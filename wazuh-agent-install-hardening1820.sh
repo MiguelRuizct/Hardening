@@ -317,7 +317,7 @@ cd /opt/Ubuntu$VERSION04-CIS
 #sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/Ubuntu$VERSION04-CIS/defaults/main.yml
 #sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/Ubuntu$VERSION04-CIS/defaults/main.yml
 
-echo "- src: https://github.com/MiguelRuizct/Ubuntu$VERSION04-CIS.git" > /opt/Ubuntu$VERSION04-CIS/requirements.yml
+echo "- src: https://github.com/MiguelRuizct/Miguel$VERSION04-CIS.git" > /opt/Ubuntu$VERSION04-CIS/requirements.yml
 
 # File fixing
 #sed -i 's/collections://g' /opt/Ubuntu$VERSION04-CIS/meta/main.yml
