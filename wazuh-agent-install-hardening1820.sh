@@ -317,7 +317,7 @@ cd /opt/Ubuntu$VERSION04-CIS
 #sed -i 's/ubuntu$VERSION04cis_selinux_disable: false/ubuntu$VERSION04cis_selinux_disable: true/g' /opt/Ubuntu$VERSION04-CIS/defaults/main.yml
 #sed -i 's/ubuntu$VERSION04cis_config_aide: true/ubuntu$VERSION04cis_config_aide: false/g' /opt/Ubuntu$VERSION04-CIS/defaults/main.yml
 
-echo "- src: https://github.com/MiguelRuizct/ubuntu$VERSION04-CIS.git" > /opt/Ubuntu$VERSION04-CIS/requirements.yml
+echo "- src: https://github.com/MiguelRuizct/Ubuntu$VERSION04-CIS.git" > /opt/Ubuntu$VERSION04-CIS/requirements.yml
 
 # File fixing
 #sed -i 's/collections://g' /opt/Ubuntu$VERSION04-CIS/meta/main.yml
@@ -347,7 +347,7 @@ echo "  ignore_errors: true" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
 echo "  roles:" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
 echo "    - Ubuntu$VERSION04-CIS" >> /opt/Ubuntu$VERSION04-CIS/my_console.yml
 
-sed -i 's/- name: generate new grub config\n  become: true\n  command: grub-mkconfig -o "{{ grub_cfg.stat.path }}"\n  notify: fix permissions after generate new grub config handler\n/- name: generate new grub config\n  become: true\n  command: grub-mkconfig -o "{{ grub_cfg.stat.path }}"\n  notify: fix permissions after generate new grub config handler\n  tags: grub_config\n/g'  /opt/ubuntu$VERSION04-CIS/roles/ubuntu$VERSION04-CIS/handlers/main.yml
+sed -i 's/- name: generate new grub config\n  become: true\n  command: grub-mkconfig -o "{{ grub_cfg.stat.path }}"\n  notify: fix permissions after generate new grub config handler\n/- name: generate new grub config\n  become: true\n  command: grub-mkconfig -o "{{ grub_cfg.stat.path }}"\n  notify: fix permissions after generate new grub config handler\n  tags: grub_config\n/g'  /opt/Ubuntu$VERSION04-CIS/roles/Ubuntu$VERSION04-CIS/handlers/main.yml
 
 ## Function to add a tag in a specific paragraph
 ## Disabled by default. Only here just in case.
