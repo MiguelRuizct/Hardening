@@ -93,7 +93,7 @@ if [[ $VERSION == "20" ]]
 	sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal main restricted universe multiverse/g' /etc/apt/sources.list
 	sed -i 's/deb http:\/\/security.ubuntu.com\/ubuntu\/ focal-security main restricted/deb http:\/\/security.ubuntu.com\/ubuntu\/ focal-security main restricted universe multiverse/g' /etc/apt/sources.list
 	sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal-updates main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ focal-updates main restricted universe multiverse/g' /etc/apt/sources.list
-	elif [[ $VERSIONCHECK == "18" ]]
+	elif [[ $VERSION == "18" ]]
 	then
 	sed -i 's/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic main restricted/deb http:\/\/archive.ubuntu.com\/ubuntu\/ bionic main restricted universe multiverse/g' /etc/apt/sources.list
 	sed -i 's/deb http:\/\/security.ubuntu.com\/ubuntu\/ bionic-security main restricted/deb http:\/\/security.ubuntu.com\/ubuntu\/ bionic-security main restricted universe multiverse/g' /etc/apt/sources.list
