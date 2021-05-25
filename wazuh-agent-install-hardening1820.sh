@@ -412,7 +412,7 @@ function ansible_remove(){
 
 		# Installed packages
 		echo "Removing installed packages"
-		apt remove ieee-data libpython-stdlib libpython2.7 libpython2.7-minimal libpython2.7-stdlib python -y
+		apt remove ieee-data libpython-stdlib python -y
 		apt remove python-asn1crypto python-certifi python-cffi-backend python-chardet python-crypto -y
 		apt remove python-cryptography python-enum34 python-httplib2 python-idna python-ipaddress python-jinja2 -y 
 		apt remove python-jmespath python-kerberos python-libcloud python-lockfile python-markupsafe python-minimal -y 
