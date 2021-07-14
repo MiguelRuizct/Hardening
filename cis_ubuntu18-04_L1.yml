@@ -8,7 +8,7 @@
 # Foundation
 #
 # Based on:
-# Center for Internet Security Ubuntu Linux 18.04 LTS Benchmark v1.0.0 - 07-21-2020 
+# Center for Internet Security Ubuntu Linux 18.04 LTS Benchmark v2.0.1 
 
 policy:
   id: "cis_ubuntu18-04"
